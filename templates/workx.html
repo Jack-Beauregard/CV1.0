@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Munkatapasztalat{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <h1 class="page-title">Munkatapasztalat</h1>
+    <div class="content-box">
+        <ul class="hierarchical-list">
+            <!-- Fehér -->
+            <li class="list-item expandable">
+                <div class="list-item-header" onclick="toggleItem(this)">
+                    <div class="list-item-title">
+                        <span class="expand-arrow">▶</span>
+                        <span>Elektrogama Kft.</span>
+                    </div>
+                    <span class="date-range">2025.04 - 2025.07</span>
+                </div>
+                <ul class="sub-list">
+                    <li>Ipari elosztó dobozok fúrása, összeszerelése</li>
+                    <li>Pénztárkezelés</li>
+                    <li>Raktározás és anyagmozgatás</li>
+                    <li>Üzlet tisztán tartása</li>
+                    <li>Vevői igények felmérése</li>
+                </ul>
+            </li>
+
+            <!-- Sárga -->
+            <li class="list-item expandable">
+                <div class="list-item-header" onclick="toggleItem(this)">
+                    <div class="list-item-title">
+                        <span class="expand-arrow">▶</span>
+                        <span>Bike Kitchen BringaPont</span>
+                    </div>
+                    <span class="date-range">2023.11 - 2024.1</span>
+                </div>
+                <ul class="sub-list">
+                    <li>Garanciális és térítéses javítási munkák elvégzése</li>
+                    <li>Ügyfelekkel történő kommunikáció - személyes, írásos és telefonos kapcsolattartás</li>
+                    <li>Javítóanyag beszerzés, szerviz ügyintézés</li>
+                    <li>Árukezelés</li>
+                    <li>Kasszakezelés</li>
+                    <li>Árösszehasonlítás, piackutatás</li>
+                    <li>Irodai szoftver használata (Excel)</li>
+                </ul>
+            </li>
+
+            <!-- Piros -->
+            <li class="list-item expandable">
+                <div class="list-item-header" onclick="toggleItem(this)">
+                    <div class="list-item-title">
+                        <span class="expand-arrow">▶</span>
+                        <span>Tyco Electronics Hungary Termelő Kft.</span>
+                    </div>
+                    <span class="date-range">2022.09 - 2023.05</span>
+                </div>
+                <ul class="sub-list">
+                    <li>Forrasztás</li>
+                    <li>PLC programozás</li>
+                    <li>Kapcsolási rajz olvasása</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+function toggleItem(header) {
+    const listItem = header.parentElement;
+    const subList = listItem.querySelector('.sub-list');
+    
+    if (listItem.classList.contains('expanded')) {
+        // Closing - set current height + padding explicitly
+        const currentHeight = subList.scrollHeight;
+        subList.style.height = currentHeight + 'px';
+        
+        // Force reflow
+        void subList.offsetHeight;
+        
+        // Now animate to 0
+        subList.style.height = '0';
+        listItem.classList.remove('expanded');
+    } else {
+        // Opening - set height from 0 to target without jump
+        subList.style.height = '0';
+        listItem.classList.add('expanded');
+        
+        // Force reflow
+        void subList.offsetHeight;
+        
+        // Get target height after class is added
+        const targetHeight = subList.scrollHeight;
+        
+        // Animate to target height
+        subList.style.height = targetHeight + 'px';
+        
+        // After animation, set to auto for responsiveness
+        setTimeout(() => {
+            if (listItem.classList.contains('expanded')) {
+                subList.style.height = 'auto';
+            }
+        }, 400);
+    }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,1144 @@
+/* ===== ÁLTALÁNOS STÍLUSOK ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll !important;
+    scrollbar-gutter: stable;
+    background: #0a0e1a;
+    background: -webkit-linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 100%);
+    background: -moz-linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 100%);
+    background: -o-linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 100%);
+    background: linear-gradient(135deg, var(--bg-gradient-start, #0a0e1a) 0%, var(--bg-gradient-end, #1a1f3a) 100%);
+    color: #e0e6ed;
+    color: var(--text-color, #e0e6ed);
+    position: relative;
+}
+
+/* Tech háttér minta (nem HOME oldalon) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(0, 217, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 217, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 0, 128, 0.15) 0%, transparent 60%);
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    opacity: 0.08;
+    z-index: 0;
+    pointer-events: none;
+    background-image: 
+        repeating-conic-gradient(from 0deg at 50% 50%, 
+            transparent 0deg, 
+            transparent 5deg, 
+            rgba(0, 217, 255, 0.4) 5deg, 
+            rgba(0, 217, 255, 0.4) 6deg, 
+            transparent 6deg, 
+            transparent 30deg),
+        repeating-radial-gradient(circle at 50% 50%, 
+            transparent 0px, 
+            transparent 80px, 
+            rgba(0, 217, 255, 0.3) 80px, 
+            rgba(0, 217, 255, 0.3) 82px, 
+            transparent 82px, 
+            transparent 160px);
+    border-radius: 50%;
+    -webkit-animation: rotateTech 60s linear infinite;
+    -moz-animation: rotateTech 60s linear infinite;
+    -o-animation: rotateTech 60s linear infinite;
+    animation: rotateTech 60s linear infinite;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(90deg, transparent 0%, rgba(0, 217, 255, 0.8) 8%, transparent 16%),
+        linear-gradient(90deg, transparent 10%, rgba(0, 200, 240, 0.6) 18%, transparent 26%),
+        linear-gradient(90deg, transparent 5%, rgba(0, 217, 255, 0.9) 13%, transparent 21%),
+        linear-gradient(90deg, transparent 25%, rgba(0, 200, 240, 0.5) 33%, transparent 41%),
+        linear-gradient(90deg, transparent 20%, rgba(0, 217, 255, 0.7) 28%, transparent 36%),
+        linear-gradient(90deg, transparent 40%, rgba(0, 200, 240, 0.8) 48%, transparent 56%),
+        linear-gradient(90deg, transparent 35%, rgba(0, 217, 255, 0.6) 43%, transparent 51%),
+        linear-gradient(90deg, transparent 55%, rgba(0, 200, 240, 0.7) 63%, transparent 71%),
+        linear-gradient(90deg, transparent 50%, rgba(0, 217, 255, 0.5) 58%, transparent 66%),
+        linear-gradient(90deg, transparent 70%, rgba(0, 200, 240, 0.9) 78%, transparent 86%),
+        linear-gradient(90deg, transparent 65%, rgba(0, 217, 255, 0.7) 73%, transparent 81%),
+        linear-gradient(90deg, transparent 80%, rgba(0, 200, 240, 0.6) 88%, transparent 96%),
+        linear-gradient(90deg, transparent 12%, rgba(0, 217, 255, 0.6) 20%, transparent 28%),
+        linear-gradient(90deg, transparent 32%, rgba(0, 200, 240, 0.7) 40%, transparent 48%),
+        linear-gradient(90deg, transparent 58%, rgba(0, 217, 255, 0.8) 66%, transparent 74%);
+    background-size: 200% 2px, 200% 3px, 200% 4px, 200% 2px, 200% 3px, 200% 2px, 200% 4px, 200% 2px, 200% 3px, 200% 2px, 200% 4px, 200% 3px, 200% 2px, 200% 3px, 200% 2px;
+    background-position: 
+        0 6%, 0 12%, 0 18%, 0 24%, 0 30%, 
+        0 36%, 0 42%, 0 48%, 0 54%, 0 60%, 0 66%, 0 72%, 0 78%, 0 84%, 0 90%;
+    background-repeat: repeat-x;
+    -webkit-animation: streamFlow1 10s linear infinite;
+    -moz-animation: streamFlow1 10s linear infinite;
+    -o-animation: streamFlow1 10s linear infinite;
+    animation: streamFlow1 10s linear infinite;
+    -webkit-filter: blur(0.3px) drop-shadow(0 0 5px rgba(0, 217, 255, 0.5));
+    filter: blur(0.3px) drop-shadow(0 0 5px rgba(0, 217, 255, 0.5));
+}
+
+/* CSS változók támogatásával */
+@supports (--custom: property) {
+    body::before {
+        background-image:
+            linear-gradient(90deg, transparent 0%, var(--stream-color-1, rgba(0, 217, 255, 0.8)) 8%, transparent 16%),
+            linear-gradient(90deg, transparent 10%, var(--stream-color-2, rgba(0, 200, 240, 0.6)) 18%, transparent 26%),
+            linear-gradient(90deg, transparent 5%, var(--stream-color-1, rgba(0, 217, 255, 0.9)) 13%, transparent 21%),
+            linear-gradient(90deg, transparent 25%, var(--stream-color-2, rgba(0, 200, 240, 0.5)) 33%, transparent 41%),
+            linear-gradient(90deg, transparent 20%, var(--stream-color-1, rgba(0, 217, 255, 0.7)) 28%, transparent 36%),
+            linear-gradient(90deg, transparent 40%, var(--stream-color-2, rgba(0, 200, 240, 0.8)) 48%, transparent 56%),
+            linear-gradient(90deg, transparent 35%, var(--stream-color-1, rgba(0, 217, 255, 0.6)) 43%, transparent 51%),
+            linear-gradient(90deg, transparent 55%, var(--stream-color-2, rgba(0, 200, 240, 0.7)) 63%, transparent 71%),
+            linear-gradient(90deg, transparent 50%, var(--stream-color-1, rgba(0, 217, 255, 0.5)) 58%, transparent 66%),
+            linear-gradient(90deg, transparent 70%, var(--stream-color-2, rgba(0, 200, 240, 0.9)) 78%, transparent 86%),
+            linear-gradient(90deg, transparent 65%, var(--stream-color-1, rgba(0, 217, 255, 0.7)) 73%, transparent 81%),
+            linear-gradient(90deg, transparent 80%, var(--stream-color-2, rgba(0, 200, 240, 0.6)) 88%, transparent 96%),
+            linear-gradient(90deg, transparent 12%, var(--stream-color-1, rgba(0, 217, 255, 0.6)) 20%, transparent 28%),
+            linear-gradient(90deg, transparent 32%, var(--stream-color-2, rgba(0, 200, 240, 0.7)) 40%, transparent 48%),
+            linear-gradient(90deg, transparent 58%, var(--stream-color-1, rgba(0, 217, 255, 0.8)) 66%, transparent 74%);
+        -webkit-filter: blur(0.3px) drop-shadow(0 0 5px var(--stream-glow, rgba(0, 217, 255, 0.5)));
+        filter: blur(0.3px) drop-shadow(0 0 5px var(--stream-glow, rgba(0, 217, 255, 0.5)));
+    }
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(90deg, transparent 0%, rgba(0, 200, 240, 0.7) 10%, transparent 20%),
+        linear-gradient(90deg, transparent 15%, rgba(0, 217, 255, 0.8) 25%, transparent 35%),
+        linear-gradient(90deg, transparent 30%, rgba(0, 200, 240, 0.6) 40%, transparent 50%),
+        linear-gradient(90deg, transparent 45%, rgba(0, 217, 255, 0.7) 55%, transparent 65%),
+        linear-gradient(90deg, transparent 60%, rgba(0, 200, 240, 0.9) 70%, transparent 80%),
+        linear-gradient(90deg, transparent 75%, rgba(0, 217, 255, 0.6) 85%, transparent 95%),
+        linear-gradient(90deg, transparent 8%, rgba(0, 200, 240, 0.5) 18%, transparent 28%),
+        linear-gradient(90deg, transparent 38%, rgba(0, 217, 255, 0.7) 48%, transparent 58%),
+        linear-gradient(90deg, transparent 68%, rgba(0, 200, 240, 0.8) 78%, transparent 88%);
+    background-size: 200% 3px, 200% 2px, 200% 4px, 200% 2px, 200% 3px, 200% 2px, 200% 2px, 200% 3px, 200% 2px;
+    background-position: 
+        0 9%, 0 21%, 0 33%, 0 45%, 0 57%, 0 69%, 0 81%, 0 87%, 0 93%;
+    background-repeat: repeat-x;
+    -webkit-animation: streamFlow2 7s linear infinite;
+    -moz-animation: streamFlow2 7s linear infinite;
+    -o-animation: streamFlow2 7s linear infinite;
+    animation: streamFlow2 7s linear infinite;
+    -webkit-filter: blur(0.3px) drop-shadow(0 0 4px rgba(0, 217, 255, 0.4));
+    filter: blur(0.3px) drop-shadow(0 0 4px rgba(0, 217, 255, 0.4));
+}
+
+/* CSS változók támogatásával */
+@supports (--custom: property) {
+    body::after {
+        background-image:
+            linear-gradient(90deg, transparent 0%, var(--stream-color-2, rgba(0, 200, 240, 0.7)) 10%, transparent 20%),
+            linear-gradient(90deg, transparent 15%, var(--stream-color-1, rgba(0, 217, 255, 0.8)) 25%, transparent 35%),
+            linear-gradient(90deg, transparent 30%, var(--stream-color-2, rgba(0, 200, 240, 0.6)) 40%, transparent 50%),
+            linear-gradient(90deg, transparent 45%, var(--stream-color-1, rgba(0, 217, 255, 0.7)) 55%, transparent 65%),
+            linear-gradient(90deg, transparent 60%, var(--stream-color-2, rgba(0, 200, 240, 0.9)) 70%, transparent 80%),
+            linear-gradient(90deg, transparent 75%, var(--stream-color-1, rgba(0, 217, 255, 0.6)) 85%, transparent 95%),
+            linear-gradient(90deg, transparent 8%, var(--stream-color-2, rgba(0, 200, 240, 0.5)) 18%, transparent 28%),
+            linear-gradient(90deg, transparent 38%, var(--stream-color-1, rgba(0, 217, 255, 0.7)) 48%, transparent 58%),
+            linear-gradient(90deg, transparent 68%, var(--stream-color-2, rgba(0, 200, 240, 0.8)) 78%, transparent 88%);
+        -webkit-filter: blur(0.3px) drop-shadow(0 0 4px var(--stream-glow, rgba(0, 217, 255, 0.4)));
+        filter: blur(0.3px) drop-shadow(0 0 4px var(--stream-glow, rgba(0, 217, 255, 0.4)));
+    }
+}
+
+html[data-theme="light"] {
+    --stream-color-1: rgba(70, 150, 160, 0.8);
+    --stream-color-2: rgba(60, 140, 150, 0.7);
+    --stream-glow: rgba(70, 150, 160, 0.5);
+}
+
+html[data-theme="dark"] {
+    --stream-color-1: rgba(0, 217, 255, 0.8);
+    --stream-color-2: rgba(0, 200, 240, 0.7);
+    --stream-glow: rgba(0, 217, 255, 0.5);
+}
+
+@-webkit-keyframes streamFlow1 {
+    from {
+        background-position: 
+            0% 6%, 0% 12%, 0% 18%, 0% 24%, 0% 30%, 
+            0% 36%, 0% 42%, 0% 48%, 0% 54%, 0% 60%, 0% 66%, 0% 72%, 0% 78%, 0% 84%, 0% 90%;
+    }
+    to {
+        background-position: 
+            200% 6%, 200% 12%, 200% 18%, 200% 24%, 200% 30%, 
+            200% 36%, 200% 42%, 200% 48%, 200% 54%, 200% 60%, 200% 66%, 200% 72%, 200% 78%, 200% 84%, 200% 90%;
+    }
+}
+@-moz-keyframes streamFlow1 {
+    from {
+        background-position: 
+            0% 6%, 0% 12%, 0% 18%, 0% 24%, 0% 30%, 
+            0% 36%, 0% 42%, 0% 48%, 0% 54%, 0% 60%, 0% 66%, 0% 72%, 0% 78%, 0% 84%, 0% 90%;
+    }
+    to {
+        background-position: 
+            200% 6%, 200% 12%, 200% 18%, 200% 24%, 200% 30%, 
+            200% 36%, 200% 42%, 200% 48%, 200% 54%, 200% 60%, 200% 66%, 200% 72%, 200% 78%, 200% 84%, 200% 90%;
+    }
+}
+@-o-keyframes streamFlow1 {
+    from {
+        background-position: 
+            0% 6%, 0% 12%, 0% 18%, 0% 24%, 0% 30%, 
+            0% 36%, 0% 42%, 0% 48%, 0% 54%, 0% 60%, 0% 66%, 0% 72%, 0% 78%, 0% 84%, 0% 90%;
+    }
+    to {
+        background-position: 
+            200% 6%, 200% 12%, 200% 18%, 200% 24%, 200% 30%, 
+            200% 36%, 200% 42%, 200% 48%, 200% 54%, 200% 60%, 200% 66%, 200% 72%, 200% 78%, 200% 84%, 200% 90%;
+    }
+}
+@keyframes streamFlow1 {
+    from {
+        background-position: 
+            0% 6%, 0% 12%, 0% 18%, 0% 24%, 0% 30%, 
+            0% 36%, 0% 42%, 0% 48%, 0% 54%, 0% 60%, 0% 66%, 0% 72%, 0% 78%, 0% 84%, 0% 90%;
+    }
+    to {
+        background-position: 
+            200% 6%, 200% 12%, 200% 18%, 200% 24%, 200% 30%, 
+            200% 36%, 200% 42%, 200% 48%, 200% 54%, 200% 60%, 200% 66%, 200% 72%, 200% 78%, 200% 84%, 200% 90%;
+    }
+}
+
+@-webkit-keyframes streamFlow2 {
+    from {
+        background-position: 
+            0% 9%, 0% 21%, 0% 33%, 0% 45%, 0% 57%, 0% 69%, 0% 81%, 0% 87%, 0% 93%;
+    }
+    to {
+        background-position: 
+            200% 9%, 200% 21%, 200% 33%, 200% 45%, 200% 57%, 200% 69%, 200% 81%, 200% 87%, 200% 93%;
+    }
+}
+@-moz-keyframes streamFlow2 {
+    from {
+        background-position: 
+            0% 9%, 0% 21%, 0% 33%, 0% 45%, 0% 57%, 0% 69%, 0% 81%, 0% 87%, 0% 93%;
+    }
+    to {
+        background-position: 
+            200% 9%, 200% 21%, 200% 33%, 200% 45%, 200% 57%, 200% 69%, 200% 81%, 200% 87%, 200% 93%;
+    }
+}
+@-o-keyframes streamFlow2 {
+    from {
+        background-position: 
+            0% 9%, 0% 21%, 0% 33%, 0% 45%, 0% 57%, 0% 69%, 0% 81%, 0% 87%, 0% 93%;
+    }
+    to {
+        background-position: 
+            200% 9%, 200% 21%, 200% 33%, 200% 45%, 200% 57%, 200% 69%, 200% 81%, 200% 87%, 200% 93%;
+    }
+}
+@keyframes streamFlow2 {
+    from {
+        background-position: 
+            0% 9%, 0% 21%, 0% 33%, 0% 45%, 0% 57%, 0% 69%, 0% 81%, 0% 87%, 0% 93%;
+    }
+    to {
+        background-position: 
+            200% 9%, 200% 21%, 200% 33%, 200% 45%, 200% 57%, 200% 69%, 200% 81%, 200% 87%, 200% 93%;
+    }
+}
+
+/* HOME oldalon ne legyenek a vonalak animációk */
+/* :has() selector fallback - JavaScript-ben kezelve */
+body.home-page::before {
+    display: none !important;
+}
+
+body.home-page::after {
+    display: none !important;
+}
+
+@-webkit-keyframes rotateTech {
+    from { -webkit-transform: translate(-50%, -50%) rotate(0deg); }
+    to { -webkit-transform: translate(-50%, -50%) rotate(360deg); }
+}
+@-moz-keyframes rotateTech {
+    from { -moz-transform: translate(-50%, -50%) rotate(0deg); }
+    to { -moz-transform: translate(-50%, -50%) rotate(360deg); }
+}
+@-o-keyframes rotateTech {
+    from { -o-transform: translate(-50%, -50%) rotate(0deg); }
+    to { -o-transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes rotateTech {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ===== HAMBURGER MENÜ GOMB ===== */
+.hamburger-menu {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 1000;
+    cursor: pointer;
+    padding: 10px;
+    -webkit-transition: opacity 0.3s ease, visibility 0.3s ease;
+    -moz-transition: opacity 0.3s ease, visibility 0.3s ease;
+    -o-transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.hamburger-menu.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.hamburger-menu:hover {
+    -webkit-transform: translateY(-50%) scale(1.1);
+    -moz-transform: translateY(-50%) scale(1.1);
+    -ms-transform: translateY(-50%) scale(1.1);
+    -o-transform: translateY(-50%) scale(1.1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.hamburger-icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hamburger-icon span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    border-radius: 2px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+/* ===== SIDEBAR MENÜ ===== */
+.sidebar {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 80px 0 40px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    z-index: 999;
+    -webkit-transition: left 0.3s ease;
+    -moz-transition: left 0.3s ease;
+    -o-transition: left 0.3s ease;
+    transition: left 0.3s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(10px)) {
+    .sidebar {
+        background: rgba(10, 14, 26, 0.98);
+    }
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.hamburger-menu:hover ~ .sidebar,
+.sidebar:hover {
+    left: 0;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0 20px;
+}
+
+.menu-item {
+    padding: 18px 24px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease;
+    -moz-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
+}
+
+.menu-item:hover::before,
+.menu-item.active::before {
+    opacity: 1;
+}
+
+.menu-footer {
+    padding: 0 20px;
+    margin-top: auto;
+}
+
+.logout-link {
+    display: block;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 8px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.logout-link:hover {
+    opacity: 1;
+}
+
+/* ===== TÉMA VÁLTÓ GOMB - TRON LIGHTCYCLE ===== */
+.theme-toggle-track {
+    position: fixed;
+    top: 23px;
+    right: 30px;
+    width: 140px;
+    height: 60px;
+    background: rgba(10, 20, 40, 0.8);
+    background: var(--theme-toggle-bg, rgba(10, 20, 40, 0.8));
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 2px 10px rgba(0, 0, 0, 0.5);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.theme-toggle-track:hover {
+    box-shadow: 0 6px 30px rgba(0, 217, 255, 0.3), inset 0 2px 10px rgba(0, 0, 0, 0.5);
+    border-color: rgba(0, 217, 255, 0.4);
+}
+
+/* Fénycsík */
+.lightcycle-trail {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform-origin: top;
+    -moz-transform-origin: top;
+    -ms-transform-origin: top;
+    -o-transform-origin: top;
+    transform-origin: top;
+    height: 13px;
+    width: 0;
+    background: -webkit-linear-gradient(90deg, transparent, #00d9ff, #00d9ff);
+    background: -moz-linear-gradient(90deg, transparent, #00d9ff, #00d9ff);
+    background: -o-linear-gradient(90deg, transparent, #00d9ff, #00d9ff);
+    background: linear-gradient(90deg, transparent, #00d9ff, #00d9ff);
+    box-shadow: 0 0 10px #00d9ff, 0 0 20px #00d9ff;
+    -webkit-transition: width 0.8s ease;
+    -moz-transition: width 0.8s ease;
+    -o-transition: width 0.8s ease;
+    transition: width 0.8s ease;
+    z-index: 1;
+}
+
+/* Lightcycle motor */
+.lightcycle {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    -webkit-transition: left 0.8s ease;
+    -moz-transition: left 0.8s ease;
+    -o-transition: left 0.8s ease;
+    transition: left 0.8s ease;
+    z-index: 2;
+    -webkit-filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.3));
+    filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.3));
+}
+
+.lightcycle svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Light mode - motor a jobb oldalon */
+body.light-theme .lightcycle {
+    left: 85px;
+}
+
+body.light-theme .lightcycle-trail {
+    width: 80px;
+}
+
+/* ===== FŐ TARTALOM ===== */
+.main-content {
+    margin-left: 80px;
+    padding: 40px;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.page-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.content-box {
+    padding: 40px;
+    border-radius: 16px;
+    background: rgba(26, 31, 58, 0.6);
+    background: var(--content-box-bg, rgba(26, 31, 58, 0.6));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* ===== LISTA STÍLUSOK ===== */
+.color-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.color-list li {
+    font-size: 28px;
+    padding: 20px 30px;
+    margin: 15px 0;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid;
+    letter-spacing: 1px;
+}
+
+/* Csak kinyitható elemek kapnak hover effektet és transition-t */
+.color-list li.expandable {
+    -webkit-transition: -webkit-transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    -moz-transition: -moz-transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    -o-transition: -o-transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.color-list li.expandable:hover {
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 217, 255, 0.2);
+}
+
+/* ===== HIERARCHIKUS LISTA (LEARN oldal) ===== */
+.hierarchical-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-item {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.list-item-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    font-size: 28px;
+    padding: 20px 30px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+/* Csak a kinyitható elemek legyenek kattinthatóak és hover-elhetőek */
+.list-item.expandable .list-item-header {
+    cursor: pointer;
+    -webkit-transition: -webkit-transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    -moz-transition: -moz-transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    -o-transition: -o-transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.list-item.expandable .list-item-header:hover {
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    -ms-transform: translateX(10px);
+    -o-transform: translateX(10px);
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 217, 255, 0.2);
+}
+
+.list-item-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.expand-arrow {
+    font-size: 20px;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    -moz-transition: -moz-transform 0.3s ease;
+    -o-transition: -o-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.list-item.expanded .expand-arrow {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.date-range {
+    font-size: 18px;
+    opacity: 0.7;
+    font-weight: normal;
+    letter-spacing: 0;
+}
+
+.sub-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: height 0.4s ease, opacity 0.3s ease;
+    -moz-transition: height 0.4s ease, opacity 0.3s ease;
+    -o-transition: height 0.4s ease, opacity 0.3s ease;
+    transition: height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.list-item.expanded .sub-list {
+    height: auto;
+    opacity: 1;
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+
+.sub-list li {
+    font-size: 24px;
+    padding: 15px 30px;
+    margin: 10px 0 10px 60px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid;
+}
+
+/* ===== LOGIN OLDAL ===== */
+.login-page {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+}
+
+.login-box {
+    padding: 50px 40px;
+    border-radius: 20px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    -webkit-animation: slideIn 0.5s ease;
+    -moz-animation: slideIn 0.5s ease;
+    -o-animation: slideIn 0.5s ease;
+    animation: slideIn 0.5s ease;
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not (backdrop-filter: blur(20px)) {
+    .login-box {
+        background: rgba(26, 31, 58, 0.95);
+    }
+}
+
+@-webkit-keyframes slideIn {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+@-moz-keyframes slideIn {
+    from {
+        opacity: 0;
+        -moz-transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        -moz-transform: translateY(0);
+    }
+}
+@-o-keyframes slideIn {
+    from {
+        opacity: 0;
+        -o-transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        -o-transform: translateY(0);
+    }
+}
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-box h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.password-input {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.password-input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.login-button {
+    width: 100%;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.login-button:hover {
+    -webkit-transform: translateY(-2px);
+    -moz-transform: translateY(-2px);
+    -ms-transform: translateY(-2px);
+    -o-transform: translateY(-2px);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.login-button:active {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.error-message {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    animation: shake 0.5s ease;
+}
+
+@-webkit-keyframes shake {
+    0%, 100% { -webkit-transform: translateX(0); }
+    25% { -webkit-transform: translateX(-10px); }
+    75% { -webkit-transform: translateX(10px); }
+}
+@-moz-keyframes shake {
+    0%, 100% { -moz-transform: translateX(0); }
+    25% { -moz-transform: translateX(-10px); }
+    75% { -moz-transform: translateX(10px); }
+}
+@-o-keyframes shake {
+    0%, 100% { -o-transform: translateX(0); }
+    25% { -o-transform: translateX(-10px); }
+    75% { -o-transform: translateX(10px); }
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* ===== RESZPONZÍV DESIGN ===== */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 80px 20px 20px 20px;
+    }
+
+    .hamburger-menu {
+        top: 20px;
+        left: 20px;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none;
+    }
+
+    .hamburger-menu:hover {
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
+    .sidebar {
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        z-index: 1001;
+    }
+
+    .theme-toggle-track {
+        z-index: 1000;  
+    }
+
+    .page-title {
+        font-size: 32px;
+    }
+
+    .content-box {
+        padding: 24px;
+    }
+
+    .theme-toggle {
+        top: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+
+        /* LEARN oldali kártyák mobil fix */
+    .list-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding: 16px 20px;
+    }
+
+    .list-item-title {
+        font-size: 22px;
+    }
+
+    .date-range {
+        font-size: 16px;
+        opacity: 0.8;
+    }
+
+    .hierarchical-list .list-item {
+        margin-bottom: 12px;
+    }
+
+    .sub-list li {
+        font-size: 18px;
+        margin-left: 20px;
+        padding: 10px 20px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 40px 30px;
+    }
+
+    .login-box h1 {
+        font-size: 28px;
+    }
+
+    .page-title {
+        font-size: 28px;
+    }
+}
+
+/* ===== Mobil teljesítmény javítás – háttér animáció ===== */
+@media (max-width: 768px) {
+    body::before,
+    body::after {
+        animation-duration: 18s !important;
+        opacity: 0.1 !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+}
+
+/* ===== Mobil – blur csökkentése (sidebar, login) ===== */
+@supports (-webkit-backdrop-filter: none) {
+    @media (max-width: 768px) {
+        .sidebar,
+        .login-box {
+            -webkit-backdrop-filter: blur(8px) !important;
+            backdrop-filter: blur(8px) !important;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar,
+    .login-box {
+        background: rgba(10,14,26,0.85) !important;
+    }
+}
+
+/* ===== Mobil – lightcycle animáció gyorsítása ===== */
+@media (max-width: 768px) {
+    #lightcycle,
+    #lightcycle-trail {
+        transition-duration: 0.45s !important;
+    }
+}
+
+/* Mobil finomítás – gyorsabb animáció a lag elkerülésére */
+@media (max-width: 768px) {
+    .sub-list {
+        transition: height 0.25s ease, opacity 0.25s ease;
+    }
+}
+
+/* --- Csak mobilon tiltjuk a kijelölést --- */
+@media (hover: none) and (pointer: coarse) {
+    body {
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body.allow-select,
+    body.allow-select * {
+        -webkit-user-select: text !important;
+        user-select: text !important;
+    }
+}
+
+/* ===== Mobil reszponzívító (max 768px) ===== */
+@media (max-width: 768px) {
+    /* Fő lenyitható mező címsora */
+    .list-item-header {
+        padding: 18px;
+    }
+
+    .list-item-title span {
+        font-size: 22px; /* ugyanakkora lesz, mint a többi oldal mezője */
+    }
+
+    .expand-arrow {
+        font-size: 20px;
+    }
+
+    /* Almező */
+    .sub-list li {
+        font-size: 20px;
+        padding: 12px 20px;
+        margin-left: 40px;
+    }
+}
+
+/* ===== Sidebar profil kép ===== */
+.sidebar-profile {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.sidebar-profile-img {
+    width: 130px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+    opacity: 0.9;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sidebar-profile-img:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+/* Mobil reszponzív */
+@media (max-width: 768px) {
+    .sidebar-profile-img {
+        width: 90px;
+    }
+}

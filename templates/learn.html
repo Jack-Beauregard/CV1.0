@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Tanulmányok{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <h1 class="page-title">Tanulmányok</h1>
+    <div class="content-box">
+        <ul class="hierarchical-list">
+            <li class="list-item expandable">
+                <div class="list-item-header" onclick="toggleItem(this)">
+                    <div class="list-item-title">
+                        <span class="expand-arrow">▶</span>
+                        <span>ESZC Bottyán János Technikum</span>
+                    </div>
+                    <span class="date-range">2018 - 2023</span>
+                </div>
+                <ul class="sub-list">
+                    <li>elektronikai technikus</li>
+                    <li>érettségi</li>
+                </ul>
+            </li>
+            
+            <li class="list-item">
+                <div class="list-item-header">
+                    <div class="list-item-title">
+                        <span>József Attila Általános Iskola</span>
+                    </div>
+                    <span class="date-range">2010 - 2018</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+function toggleItem(header) {
+    const listItem = header.parentElement;
+    const subList = listItem.querySelector('.sub-list');
+    
+    if (listItem.classList.contains('expanded')) {
+        // Closing - set current height + padding explicitly
+        const currentHeight = subList.scrollHeight;
+        subList.style.height = currentHeight + 'px';
+        
+        // Force reflow
+        void subList.offsetHeight;
+        
+        // Now animate to 0
+        subList.style.height = '0';
+        listItem.classList.remove('expanded');
+    } else {
+        // Opening - set height from 0 to target without jump
+        subList.style.height = '0';
+        listItem.classList.add('expanded');
+        
+        // Force reflow
+        void subList.offsetHeight;
+        
+        // Get target height after class is added
+        const targetHeight = subList.scrollHeight;
+        
+        // Animate to target height
+        subList.style.height = targetHeight + 'px';
+        
+        // After animation, set to auto for responsiveness
+        setTimeout(() => {
+            if (listItem.classList.contains('expanded')) {
+                subList.style.height = 'auto';
+            }
+        }, 400);
+    }
+}
+</script>
+{% endblock %}

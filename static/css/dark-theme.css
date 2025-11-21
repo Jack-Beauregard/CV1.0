@@ -1,0 +1,189 @@
+/* ===== SÖTÉT TÉMA (CYBERPUNK) ===== */
+:root {
+    --bg-gradient-start: #0a0e1a;
+    --bg-gradient-end: #1a1f3a;
+    --text-color: #e0e6ed;
+    --content-box-bg: rgba(26, 31, 58, 0.6);
+    --theme-toggle-bg: rgba(10, 20, 40, 0.8);
+}
+body {
+    background: linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 100%);
+    color: #e0e6ed;
+}
+
+/* Hamburger menü színek */
+.hamburger-icon span {
+    background: linear-gradient(90deg, #00d9ff, #ff0080);
+    box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+/* Sidebar háttér */
+.sidebar {
+    background: linear-gradient(180deg, rgba(10, 14, 26, 0.95) 0%, rgba(26, 31, 58, 0.95) 100%);
+    box-shadow: 4px 0 30px rgba(0, 217, 255, 0.15);
+}
+
+/* Menü elemek */
+.menu-item {
+    color: #a0b3c8;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.menu-item:hover {
+    color: #00d9ff;
+    background: rgba(0, 217, 255, 0.1);
+    transform: translateX(8px);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+}
+
+.menu-item.active {
+    color: #00d9ff;
+    background: rgba(0, 217, 255, 0.15);
+    font-weight: 600;
+}
+
+.menu-item::before {
+    background: linear-gradient(180deg, #00d9ff, #ff0080);
+    box-shadow: 0 0 10px #00d9ff;
+}
+
+/* Kijelentkezés link */
+.logout-link {
+    color: #ff0080;
+    background: rgba(255, 0, 128, 0.1);
+    border: 1px solid rgba(255, 0, 128, 0.3);
+}
+
+.logout-link:hover {
+    background: rgba(255, 0, 128, 0.2);
+    box-shadow: 0 0 15px rgba(255, 0, 128, 0.4);
+}
+
+/* Téma váltó gomb */
+.theme-toggle {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(255, 0, 128, 0.2));
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    color: #00d9ff;
+}
+
+.theme-toggle:hover {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.3), rgba(255, 0, 128, 0.3));
+    box-shadow: 0 4px 30px rgba(0, 217, 255, 0.4);
+}
+
+/* Lightcycle track */
+.theme-toggle-track {
+    background: rgba(10, 20, 40, 0.9);
+    border-color: rgba(0, 217, 255, 0.3);
+}
+
+.theme-toggle-track:hover {
+    box-shadow: 0 6px 30px rgba(0, 217, 255, 0.4), inset 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Tartalom dobozok */
+.content-box {
+    background: rgba(26, 31, 58, 0.6);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 217, 255, 0.05);
+}
+
+.page-title {
+    color: #00d9ff;
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.5), 0 0 40px rgba(0, 217, 255, 0.3);
+}
+
+/* Login oldal */
+.login-box {
+    background: rgba(26, 31, 58, 0.8);
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 60px rgba(0, 217, 255, 0.2);
+}
+
+.login-box h1 {
+    color: #00d9ff;
+    text-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
+}
+
+.password-input {
+    background: rgba(10, 14, 26, 0.6);
+    border: 2px solid rgba(0, 217, 255, 0.3);
+    color: #e0e6ed;
+}
+
+.password-input:focus {
+    border-color: #00d9ff;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+    background: rgba(10, 14, 26, 0.8);
+}
+
+.password-input::placeholder {
+    color: rgba(160, 179, 200, 0.5);
+}
+
+.login-button {
+    background: linear-gradient(135deg, #00d9ff, #0099cc);
+    color: #0a0e1a;
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(0, 217, 255, 0.4);
+}
+
+.login-button:hover {
+    background: linear-gradient(135deg, #00ffff, #00b3e6);
+    box-shadow: 0 8px 30px rgba(0, 217, 255, 0.6);
+}
+
+.error-message {
+    background: rgba(255, 0, 128, 0.2);
+    border: 1px solid rgba(255, 0, 128, 0.5);
+    color: #ff0080;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(10, 14, 26, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00d9ff, #ff0080);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #00ffff, #ff0099);
+}
+
+/* Selection */
+::selection {
+    background: rgba(0, 217, 255, 0.3);
+    color: #ffffff;
+}
+
+/* Lista elemek színek - dark theme */
+.color-list li {
+    color: #00d9ff;
+    border-left-color: #00d9ff;
+}
+
+.color-list li.expandable:hover {
+    box-shadow: 0 4px 20px rgba(0, 217, 255, 0.3);
+}
+
+/* Hierarchikus lista - dark theme */
+.list-item-header {
+    color: #00d9ff;
+    border-left-color: #00d9ff;
+}
+
+.list-item.expandable .list-item-header:hover {
+    box-shadow: 0 4px 20px rgba(0, 217, 255, 0.3);
+}
+
+.sub-list li {
+    color: #a0b3c8;
+    border-left-color: #00d9ff;
+}

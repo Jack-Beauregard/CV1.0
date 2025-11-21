@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Nyelvismeret{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <h1 class="page-title">Nyelvismeret</h1>
+    <div class="content-box">
+
+        <ul class="hierarchical-list">
+
+            <!-- Fő lenyitható mező (dátum nélkül) -->
+            <li class="list-item expandable">
+                <div class="list-item-header" onclick="toggleItem(this)">
+                    <div class="list-item-title">
+                        <span class="expand-arrow">▶</span>
+                        <span>Angol</span>
+                    </div>
+                </div>
+
+                <!-- Sima egyetlen almező -->
+                <ul class="sub-list">
+                    <li class="sub-item-simple">B1</li>
+                </ul>
+            </li>
+
+        </ul>
+
+    </div>
+</div>
+
+<script>
+function toggleItem(header) {
+    const listItem = header.parentElement;
+    const subList = listItem.querySelector('.sub-list');
+
+    if (!subList) return;
+
+    if (listItem.classList.contains('expanded')) {
+        const currentHeight = subList.scrollHeight;
+        subList.style.height = currentHeight + 'px';
+        void subList.offsetHeight;
+        subList.style.height = '0';
+        listItem.classList.remove('expanded');
+    } else {
+        subList.style.height = '0';
+        listItem.classList.add('expanded');
+        void subList.offsetHeight;
+        const targetHeight = subList.scrollHeight;
+        subList.style.height = targetHeight + 'px';
+        setTimeout(() => {
+            if (listItem.classList.contains('expanded')) {
+                subList.style.height = 'auto';
+            }
+        }, 400);
+    }
+}
+</script>
+
+{% endblock %}

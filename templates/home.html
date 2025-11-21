@@ -1,0 +1,356 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <div class="profile-content">
+        <h1 class="profile-name" id="profile-name"></h1>
+        <p class="profile-email" id="profile-email"></p>
+        <p class="profile-phone" id="profile-phone"></p>
+    </div>
+    
+    <!-- Villám SVG elemek -->
+    <svg class="lightning-container">
+        <path class="lightning" id="lightning1" d="" stroke="#00d9ff" stroke-width="2" fill="none" opacity="0"/>
+        <path class="lightning" id="lightning2" d="" stroke="#00d9ff" stroke-width="2" fill="none" opacity="0"/>
+        <path class="lightning" id="lightning3" d="" stroke="#00d9ff" stroke-width="2" fill="none" opacity="0"/>
+    </svg>
+</div>
+
+<style>
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+    position: relative;
+}
+
+/* Napsugár effekt light mode-ban */
+.home-container::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 200%;
+    height: 150%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    background: transparent;
+    -webkit-transition: opacity 0.5s ease 0.4s;
+    -moz-transition: opacity 0.5s ease 0.4s;
+    -o-transition: opacity 0.5s ease 0.4s;
+    transition: opacity 0.5s ease 0.4s;
+}
+
+[data-theme="light"] .home-container::before {
+    opacity: 1;
+    background: radial-gradient(ellipse at 50% 0%, 
+        rgba(255, 220, 100, 0.4) 0%,
+        rgba(255, 210, 90, 0.3) 15%,
+        rgba(250, 200, 80, 0.2) 25%,
+        rgba(240, 190, 70, 0.1) 35%,
+        transparent 50%);
+}
+
+[data-theme="light"] .profile-content {
+    filter: drop-shadow(0 25px 40px rgba(60, 40, 20, 0.3));
+}
+
+.profile-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-name {
+    font-size: 72px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #00d9ff;
+    text-shadow: 0 0 30px rgba(0, 217, 255, 0.6), 0 0 60px rgba(0, 217, 255, 0.3);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+[data-theme="light"] .profile-name {
+    color: #2a7d91;
+    text-shadow: 0 3px 10px rgba(60, 40, 20, 0.3), 0 6px 20px rgba(80, 50, 30, 0.2);
+}
+
+.profile-email,
+.profile-phone {
+    font-size: 24px;
+    margin: 20px 0;
+    color: #a0b3c8;
+    letter-spacing: 2px;
+}
+
+[data-theme="light"] .profile-email,
+[data-theme="light"] .profile-phone {
+    color: #5a7a8e;
+    text-shadow: 0 2px 6px rgba(60, 40, 20, 0.15);
+}
+
+.profile-name span,
+.profile-email span,
+.profile-phone span {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeInChar 0.5s ease forwards;
+}
+
+@keyframes fadeInChar {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Villám animáció */
+.lightning-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+[data-theme="light"] .lightning-container {
+    display: none;
+}
+
+.lightning {
+    filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 20px currentColor);
+}
+
+@keyframes lightningStrike {
+    0%, 10% { opacity: 0; }
+    15% { opacity: 1; }
+    20% { opacity: 0; }
+    25% { opacity: 1; }
+    30%, 100% { opacity: 0; }
+}
+
+@keyframes textSpark {
+    0%, 100% { 
+        text-shadow: 0 0 30px rgba(0, 217, 255, 0.6), 0 0 60px rgba(0, 217, 255, 0.3);
+    }
+    50% { 
+        text-shadow: 0 0 60px rgba(0, 217, 255, 1), 
+                     0 0 100px rgba(0, 217, 255, 0.8),
+                     0 0 140px rgba(255, 255, 255, 0.6);
+        filter: brightness(1.5);
+    }
+}
+
+.text-spark-animation {
+    animation: textSpark 0.6s ease-out;
+}
+
+@media (max-width: 768px) {
+    .profile-name {
+        font-size: 48px;
+    }
+    
+    .profile-email,
+    .profile-phone {
+        font-size: 18px;
+    }
+}
+</style>
+
+<script>
+(function() {
+    function initHomePage() {
+        var name = 'HETES';
+        var email = 'abcd@gmail.com';
+        var phone = '+10 00 000 000 000';
+        
+        var nameEl = document.getElementById('profile-name');
+        var emailEl = document.getElementById('profile-email');
+        var phoneEl = document.getElementById('profile-phone');
+        
+        if (!nameEl || !emailEl || !phoneEl) {
+            return;
+        }
+        
+        // Helper függvények classList fallback-kel
+        function addClass(element, className) {
+            if (element && element.classList) {
+                element.classList.add(className);
+            } else if (element) {
+                if (element.className.indexOf(className) === -1) {
+                    element.className += ' ' + className;
+                }
+            }
+        }
+        
+        function removeClass(element, className) {
+            if (element && element.classList) {
+                element.classList.remove(className);
+            } else if (element) {
+                element.className = element.className.replace(new RegExp('(^|\\s)' + className + '(\\s|$)', 'g'), ' ');
+            }
+        }
+        
+        // Betűnként animálás
+        function animateText(text, element, startDelay) {
+            var chars = text.split('');
+            for (var i = 0; i < chars.length; i++) {
+                (function(char, index) {
+                    var span = document.createElement('span');
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    span.style.animationDelay = (startDelay + index * 0.05) + 's';
+                    if (element) {
+                        element.appendChild(span);
+                    }
+                })(chars[i], i);
+            }
+        }
+        
+        animateText(name, nameEl, 0.3);
+        animateText(email, emailEl, 1.0);
+        animateText(phone, phoneEl, 1.5);
+        
+        // Villám generálás
+        function generateLightningPath(startX, startY, endY, stopAtText) {
+            var path = 'M ' + startX + ' ' + startY;
+            var currentY = startY;
+            var currentX = startX;
+            
+            var nameEl = document.getElementById('profile-name');
+            if (!nameEl || !nameEl.getBoundingClientRect) {
+                return path;
+            }
+            var rect = nameEl.getBoundingClientRect();
+            var textTop = rect.top;
+            var textBottom = rect.bottom;
+            var textLeft = rect.left;
+            var textRight = rect.right;
+            
+            while (currentY < endY) {
+                var segmentLength = 30 + Math.random() * 50;
+                var offsetX = (Math.random() - 0.5) * 60;
+                currentY += segmentLength;
+                currentX += offsetX;
+                
+                // Ha eltalálta a szöveget és stopAtText igaz, akkor álljon meg
+                if (stopAtText && currentY >= textTop && currentY <= textBottom && 
+                    currentX >= textLeft && currentX <= textRight) {
+                    currentY = Math.min(currentY, textTop + (textBottom - textTop) / 2);
+                    path += ' L ' + currentX + ' ' + currentY;
+                    break;
+                }
+                
+                if (currentY > endY) currentY = endY;
+                path += ' L ' + currentX + ' ' + currentY;
+            }
+            
+            return path;
+        }
+        
+        function checkLightningHitsText(startX, endX) {
+            var nameEl = document.getElementById('profile-name');
+            if (!nameEl || !nameEl.getBoundingClientRect) {
+                return false;
+            }
+            var rect = nameEl.getBoundingClientRect();
+            var textCenterX = rect.left + rect.width / 2;
+            
+            // Ha a villám 200px-en belül van a szöveg közepétől
+            if (Math.abs(startX - textCenterX) < 200 || Math.abs(endX - textCenterX) < 200) {
+                // Szikrázás effekt a szövegen
+                addClass(nameEl, 'text-spark-animation');
+                setTimeout(function() {
+                    removeClass(nameEl, 'text-spark-animation');
+                }, 600);
+                return true;
+            }
+            return false;
+        }
+        
+        function triggerLightning(lightningId) {
+            var lightning = document.getElementById(lightningId);
+            if (!lightning) return;
+            
+            var startX = Math.random() * (window.innerWidth || 800);
+            var startY = 0;
+            var endY = window.innerHeight || 600;
+            
+            // Előzetes ellenőrzés: eltalálná-e a szöveget
+            var nameEl = document.getElementById('profile-name');
+            var willHitText = false;
+            if (nameEl && nameEl.getBoundingClientRect) {
+                var rect = nameEl.getBoundingClientRect();
+                var textCenterX = rect.left + rect.width / 2;
+                willHitText = Math.abs(startX - textCenterX) < 200;
+            }
+            
+            var path = generateLightningPath(startX, startY, endY, willHitText);
+            lightning.setAttribute('d', path);
+            lightning.style.animation = 'none';
+            
+            // Ellenőrzés: eltalálta-e a szöveget
+            var pathData = path.split('L');
+            if (pathData.length > 0) {
+                var lastPoint = pathData[pathData.length - 1].trim().split(' ');
+                if (lastPoint.length >= 1) {
+                    var endX = parseFloat(lastPoint[0]);
+                    if (!isNaN(endX)) {
+                        checkLightningHitsText(startX, endX);
+                    }
+                }
+            }
+            
+            setTimeout(function() {
+                lightning.style.animation = 'lightningStrike 0.6s ease-out';
+            }, 10);
+        }
+        
+        // Véletlenszerű villámok (csak dark mode-ban)
+        function randomLightning() {
+            // Ellenőrizzük hogy dark mode-ban vagyunk-e
+            var isLightMode = document.documentElement.getAttribute('data-theme') === 'light';
+            
+            if (!isLightMode) {
+                var lightnings = ['lightning1', 'lightning2', 'lightning3'];
+                var randomId = lightnings[Math.floor(Math.random() * lightnings.length)];
+                triggerLightning(randomId);
+            }
+            
+            var nextDelay = 2000 + Math.random() * 4000; // 2-6 másodperc
+            setTimeout(randomLightning, nextDelay);
+        }
+        
+        // Első villám késleltetése
+        setTimeout(randomLightning, 3000);
+    }
+    
+    if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', initHomePage);
+    } else if (document.attachEvent) {
+        document.attachEvent('onreadystatechange', function() {
+            if (document.readyState === 'complete') {
+                initHomePage();
+            }
+        });
+    } else {
+        initHomePage();
+    }
+})();
+</script>
+{% endblock %}

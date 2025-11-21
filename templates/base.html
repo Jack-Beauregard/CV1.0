@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portfólió{% endblock %}</title>
+    
+    <!-- Téma azonnal betöltése (még a CSS előtt, villanás ellen) -->
+    <script>
+        (function() {
+            var savedTheme = null;
+            try {
+                if (typeof(Storage) !== "undefined" && window.localStorage !== null) {
+                    savedTheme = localStorage.getItem('theme');
+                }
+            } catch (e) {
+                // Ignore localStorage errors
+            }
+            
+            var systemTheme = 'dark';
+            try {
+                if (window.matchMedia && typeof window.matchMedia === 'function') {
+                    var mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+                    if (mediaQuery && mediaQuery.matches) {
+                        systemTheme = 'light';
+                    }
+                }
+            } catch (e) {
+                // Fallback to dark
+            }
+            
+            var theme = savedTheme || systemTheme;
+            if (theme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                if (document.documentElement.classList) {
+                    document.documentElement.classList.add('light-theme');
+                } else {
+                    document.documentElement.className += ' light-theme';
+                }
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                if (document.documentElement.classList) {
+                    document.documentElement.classList.remove('light-theme');
+                } else {
+                    document.documentElement.className = document.documentElement.className.replace(/\s*light-theme\s*/g, ' ');
+                }
+            }
+        })();
+    </script>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-theme.css') }}" id="theme-dark">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/light-theme.css') }}" id="theme-light">
+    
+</head>
+<body>
+    <!-- Hamburger menü -->
+    <div class="hamburger-menu" id="hamburger">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Sidebar menü -->
+    <nav class="sidebar" id="sidebar">
+        <div class="menu-items">
+            <a href="{{ url_for('home') }}" class="menu-item {% if active_page == 'home' %}active{% endif %}">HOME</a>
+            <a href="{{ url_for('etc') }}" class="menu-item {% if active_page == 'etc' %}active{% endif %}">Egyéb</a>
+            <a href="{{ url_for('learn') }}" class="menu-item {% if active_page == 'learn' %}active{% endif %}">Tanulmányok</a>
+            <a href="{{ url_for('workx') }}" class="menu-item {% if active_page == 'workx' %}active{% endif %}">Munkatapasztalat</a>
+            <a href="{{ url_for('hobby') }}" class="menu-item {% if active_page == 'hobby' %}active{% endif %}">További tapasztalat</a>
+            <a href="{{ url_for('po') }}" class="menu-item {% if active_page == 'po' %}active{% endif %}">Képességek</a>
+            <a href="{{ url_for('lan') }}" class="menu-item {% if active_page == 'lan' %}active{% endif %}">Nyelvismeret</a>
+        </div>
+        <div class="sidebar-profile">
+            <img src="{{ url_for('static', filename='image/oneletrajz_kep.jpg') }}" alt="profile" class="sidebar-profile-img">
+        </div>
+        <div class="menu-footer">
+            <a href="{{ url_for('logout') }}" class="logout-link">Kijelentkezés</a>
+        </div>
+    </nav>
+
+    <!-- Téma váltó gomb - Tron Lightcycle -->
+    <div class="theme-toggle-track" id="theme-toggle">
+        <div class="lightcycle-trail" id="lightcycle-trail"></div>
+        <div class="lightcycle" id="lightcycle">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                <!-- Hátsó kerék -->
+                <circle cx="25" cy="45" r="12" fill="#ffffff" opacity="0.9"/>
+                <circle cx="25" cy="45" r="8" fill="#e0e0e0"/>
+                
+                <!-- Első kerék -->
+                <circle cx="75" cy="45" r="12" fill="#ffffff" opacity="0.9"/>
+                <circle cx="75" cy="45" r="8" fill="#e0e0e0"/>
+                
+                <!-- Motor test -->
+                <path d="M 30 30 L 70 30 L 75 45 L 65 45 L 60 35 L 40 35 L 35 45 L 25 45 Z" 
+                      fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+                
+                <!-- Ülés -->
+                <path d="M 40 25 L 60 25 L 58 32 L 42 32 Z" 
+                      fill="#f0f0f0" stroke="#cccccc" stroke-width="1"/>
+                
+                <!-- Fényszóró -->
+                <circle cx="73" cy="35" r="3" fill="#00d9ff" opacity="0.8"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Fő tartalom -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <script>
+    // HOME oldal detektálása - későbbi futás is (biztonsági net)
+    (function() {
+        var homeContainer = document.querySelector('.home-container');
+        if (homeContainer) {
+            if (document.body.classList) {
+                document.body.classList.add('home-page');
+            } else {
+                document.body.className += ' home-page';
+            }
+        }
+    })();
+    </script>
+
+    <script>
+    // Csak mobilon/tableten működjön
+    const isMobile = matchMedia("(hover: none) and (pointer: coarse)").matches;
+
+    if (isMobile) {
+        let pressTimer;
+        const longPressDuration = 400; // 0.4 mp
+
+        document.addEventListener("touchstart", function () {
+            pressTimer = setTimeout(() => {
+                document.body.classList.add("allow-select");
+            }, longPressDuration);
+        });
+
+        document.addEventListener("touchend", function () {
+            clearTimeout(pressTimer);
+        
+            // Adunk egy kis időt, hogy a user tovább jelölhessen
+            setTimeout(() => {
+                document.body.classList.remove("allow-select");
+            }, 300);
+        });
+    }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belépés</title>
+    
+    <!-- Téma azonnal betöltése (még a CSS előtt, villanás ellen) -->
+    <script>
+        (function() {
+            var savedTheme = null;
+            try {
+                if (typeof(Storage) !== "undefined" && window.localStorage !== null) {
+                    savedTheme = localStorage.getItem('theme');
+                }
+            } catch (e) {
+                // Ignore localStorage errors
+            }
+            
+            var systemTheme = 'dark';
+            try {
+                if (window.matchMedia && typeof window.matchMedia === 'function') {
+                    var mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+                    if (mediaQuery && mediaQuery.matches) {
+                        systemTheme = 'light';
+                    }
+                }
+            } catch (e) {
+                // Fallback to dark
+            }
+            
+            var theme = savedTheme || systemTheme;
+            if (theme === 'light') {
+                if (document.documentElement.classList) {
+                    document.documentElement.classList.add('light-theme');
+                } else {
+                    document.documentElement.className += ' light-theme';
+                }
+            }
+        })();
+    </script>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-theme.css') }}" id="theme-dark">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/light-theme.css') }}" id="theme-light" disabled>
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Belépés</h1>
+            <form method="POST" action="{{ url_for('login') }}">
+                <div class="form-group">
+                    <input 
+                        type="password" 
+                        name="password" 
+                        placeholder="Jelszó" 
+                        required 
+                        autofocus
+                        class="password-input"
+                    >
+                </div>
+                {% if error %}
+                <div class="error-message">{{ error }}</div>
+                {% endif %}
+                <button type="submit" class="login-button">Belépés</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</body>
+</html>
