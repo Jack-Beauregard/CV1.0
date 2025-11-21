@@ -1028,6 +1028,11 @@ body.light-theme .lightcycle-trail {
     .page-title {
         font-size: 28px;
     }
+
+    .profile-name {
+        font-size: 22px !important;   /* 👉 Mobilon kisebb felirat */
+    }
+
 }
 
 /* ===== Mobil teljesítmény javítás – háttér animáció ===== */
